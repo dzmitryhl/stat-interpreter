@@ -1,0 +1,21 @@
+<form class="form-inline pull-right" (ngSubmit)="handleFormSubmit(f.value)" #f="ngForm">
+  <label class="sr-only" for="score1">Score1</label>
+  <input id="score1"
+         placeholder=""
+         class="form-control input-md input-small"
+         type="text"
+         [(ngModel)]="row.score1"
+         name="score1"
+         required>
+  :
+  <label class="sr-only" for="score2">Score2</label>
+  <input id="score2"
+         placeholder=""
+         class="form-control input-md input-small"
+         type="text"
+         [(ngModel)]="row.score2"
+         name="score2"
+         required>
+  <button type="submit" class="btn btn-primary margin-tb-small" [disabled]="!row.reconstructed || buttonClicked">Submit</button>
+  <button *ngIf="row.reconstructed && row.scoreTime === 90" type="button" (click)="handleGoogleSearch()" class="btn btn-primary pull-right">Search in Google</button>
+</form>

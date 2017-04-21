@@ -1,0 +1,26 @@
+<form class="form-horizontal" (ngSubmit)="handleFormSubmit(f.value)" #f="ngForm">
+  <fieldset>
+    <legend>Filter Panel</legend>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="period">Select list:</label>
+      <div class="col-md-4">
+        <select id="period"
+                class="form-control"
+                ngModel
+                name="period"
+                #period="ngModel">
+          <option *ngFor="let period of periods" [ngValue]="period.id">{{period.name}} | {{period.from | date: 'dd/MM/yyyy'}} - {{period.to | date: 'dd/MM/yyyy'}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4" for="submitButton"> </label>
+      <div class="col-md-4">
+        <button id="submitButton" type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+

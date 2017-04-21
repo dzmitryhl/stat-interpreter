@@ -1,0 +1,42 @@
+<app-filter-panel></app-filter-panel>
+
+<div class="row">
+  <div class="panel panel-default filterable">
+    <div class="panel-heading">
+      <div class="clearfix">
+        <div class="pull-left">
+          <h3 class="panel-title">Forecasts</h3>
+        </div>
+        <div class="pull-right">
+          <button class="btn btn-default btn-xs btn-filter" (click)="openCloseFilterPanel()">
+            <span class="glyphicon glyphicon-filter"></span>
+            Filter
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body" *ngIf="filterPanelOpened">
+      <app-table-filters></app-table-filters>
+    </div>
+    <table class="table table-bordered" id="forecasts-table">
+      <thead>
+      <tr>
+        <th>Event</th>
+        <th>Sum</th>
+        <th>Coefficient</th>
+        <th>Minute</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let forecast of forecasts | filterForecastStatus: status"
+          [ngClass]="{'success': forecast.winning, 'danger': !forecast.winning && forecast.completed, 'warning': !forecast.winning && !forecast.completed}">
+        <td>{{forecast.eventId}}</td>
+        <td>{{forecast.betSum}}</td>
+        <td>{{forecast.coefficient}}</td>
+        <td>{{forecast.minute}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -1,0 +1,33 @@
+<li class="list-group-item">
+  <div class="row">
+    <div class="media col-sm-5">
+      <div class="media-body">
+        <h4 class="title">
+          {{match.homeTeam}} - {{match.awayTeam}}
+        </h4>
+        <div class="summary">
+          <div class="row">
+            <div class="span8 card-margin">
+              <p>
+                <span>{{match.plannedKickoffDate | date: 'short'}}</span>
+                | <i class="icon-calendar"></i> {{match.location}} : {{match.championship}}
+                | <span class="label label-info">{{match.sportName}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <ul class="list-group">
+        <app-data-import-result-candidate *ngFor="let resultCandidate of match.resultCandidates" [resultCandidate]="resultCandidate"></app-data-import-result-candidate>
+      </ul>
+    </div>
+    <div class="col-sm-3 small-margin">
+      <app-data-import-row [row]="match.details[0]"></app-data-import-row>
+<!--      <ul class="list-group">
+
+      </ul>-->
+    </div>
+  </div>
+</li>
