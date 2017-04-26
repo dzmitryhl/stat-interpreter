@@ -13,14 +13,26 @@ export class DataImportService {
   endDateFilterValue: Date = null;
   showReconstructedOnly: boolean = false;
 
+  pendingRequest: boolean;
+
   constructor(private http: Http) {}
 
-  loadData() {
-    return this.http.get('http://localhost:8080/results-check', {})
+  loadData(params: any) {
+    const body = JSON.stringify(params);
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    this.pendingRequest = true;
+
+    return this.http.post('http://localhost:8080/results-check', body, {
+      headers: headers
+    })
       .map((response: Response) => response.json())
       .subscribe(
         (data: Array<Match>) => {
           this.dataLoaded.emit(data);
+          this.pendingRequest = false;
         },
         (error: any) => {
           console.log(error);
@@ -38,7 +50,7 @@ export class DataImportService {
     })
       .subscribe(
         (response: Response) => {
-          if(response.status === 200) {
+          if (response.status === 200) {
 
           }
         },
@@ -52,7 +64,27 @@ export class DataImportService {
     return this.http.get('http://localhost:8080/import-data', {})
       .subscribe(
         (response: Response) => {
-          if(response.status === 200) {
+          if (response.status === 200) {
+
+          }
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+  }
+
+  startDataImport() {
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post('http://localhost:8080/startDataImport', {}, {
+      headers: headers,
+      withCredentials: true
+    })
+      .subscribe(
+        (response: Response) => {
+          if (response.status === 200) {
 
           }
         },

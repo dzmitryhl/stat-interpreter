@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Action Panel</div>
+  <div class="panel-body">
+    <div class="row panel-flex-container">
+      <div class="col-md-6">
+        <div class="row flex-container">
+          <div class="col-md-4">
+            <label for="startDate">Start Date:</label>
+            <div appDatePicker [initialValue]="startDateInitial" (dateSelected)="startDateSelected($event)" class="input-group date">
+              <input placeholder="" class="form-control" type="text" name="startDate" required>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="endDate">End Date:</label>
+            <div appDatePicker [initialValue]="endDateInitial" (dateSelected)="endDateSelected($event)" class="input-group date">
+              <input placeholder="" class="form-control" type="text" name="endDate" required>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-4 button-container">
+            <div *ngIf="pendingRequest" class="loader"></div>
+            <button [disabled]="pendingRequest" type="button" (click)="fetchData()" class="btn btn-primary">Load Data</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 flex-container">
+        <button type="button" (click)="importData()" class="btn btn-primary">Import Data</button>
+      </div>
+    </div>
+    <div class="row panel-flex-container">
+      <div class="col-md-3">
+        <div class="checkbox no-margin">
+          <label class="radio-inline">
+                <input
+                  type="checkbox"
+                  [(ngModel)]="uncompletedOnly">
+                Load Uncompleted Only
+              </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

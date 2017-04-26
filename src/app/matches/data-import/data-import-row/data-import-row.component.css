@@ -2,5 +2,16 @@
   width: 35px;
 }
 .margin-tb-small {
-  margin: 0px 5px;
+  margin-left: 5px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.flex-item {
+  margin-bottom: 8px;
 }

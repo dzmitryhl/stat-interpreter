@@ -12,6 +12,7 @@ import {Detail} from "../model/detail";
 export class DataImportRowComponent implements OnInit {
 
   @Input() row: Detail;
+  @Input() searchTerm: string;
 
   buttonClicked: boolean = false;
 
@@ -26,10 +27,7 @@ export class DataImportRowComponent implements OnInit {
   }
 
   handleGoogleSearch() {
-    var datePipe = new DatePipe('en-US');
-    //var query = '"' + this.row.name.split(" ").join("%20") + '"%20' + datePipe.transform(this.row.rowTimeStamp, 'dd/MM/yyyy');
-    var query = "test";
-    var win = window.open('https://www.google.ru/search?q=' + query, '_blank');
+    let win = window.open('https://www.google.ru/search?q=' + this.searchTerm, '_blank');
     win.focus();
   }
 }

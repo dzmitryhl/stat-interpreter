@@ -1,5 +1,5 @@
 <li class="list-group-item">
-  <div class="row">
+  <div class="row flex-container">
     <div class="media col-sm-5">
       <div class="media-body">
         <h4 class="title">
@@ -23,11 +23,8 @@
         <app-data-import-result-candidate *ngFor="let resultCandidate of match.resultCandidates" [resultCandidate]="resultCandidate"></app-data-import-result-candidate>
       </ul>
     </div>
-    <div class="col-sm-3 small-margin">
-      <app-data-import-row [row]="match.details[0]"></app-data-import-row>
-<!--      <ul class="list-group">
-
-      </ul>-->
+    <div class="col-sm-3 row-flex-container">
+      <app-data-import-row [row]="match.details[0]" [searchTerm]="searchTerm"></app-data-import-row>
     </div>
   </div>
 </li>

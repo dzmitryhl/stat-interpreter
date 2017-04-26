@@ -24,6 +24,7 @@ import { DatePickerDirective } from './shared/date-picker.directive';
 import { FilterMatchDateRangeStartPipe } from './pipes/filter-match-date-range-start.pipe';
 import { FilterMatchDateRangeEndPipe } from './pipes/filter-match-date-range-end.pipe';
 import { FilterMatchCompletenessPipe } from './pipes/filter-match-completeness.pipe';
+import { DataImportActionPanelComponent } from './data-import/data-import-action-panel/data-import-action-panel.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { FilterMatchCompletenessPipe } from './pipes/filter-match-completeness.p
     DatePickerDirective,
     FilterMatchDateRangeStartPipe,
     FilterMatchDateRangeEndPipe,
-    FilterMatchCompletenessPipe
+    FilterMatchCompletenessPipe,
+    DataImportActionPanelComponent
   ],
   exports: [MatchesComponent],
   providers: [MatchService, DataImportService]

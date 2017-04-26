@@ -1,8 +1,6 @@
+<app-data-import-action-panel></app-data-import-action-panel>
 <app-data-import-filter-panel [competitionFilters]="competitionFilters"></app-data-import-filter-panel>
 
 <ul class="list-group">
   <app-data-import-row-container *ngFor="let match of matches | filterMatchLocation: locationFilterValue | filterMatchChampionship: championshipFilterValue | filterMatchDateRangeStart: startDateFilterValue | filterMatchDateRangeEnd: endDateFilterValue | filterMatchCompleteness: isReconstructedOnly" [match]="match"></app-data-import-row-container>
 </ul>
-
-<!-- <button type="button" (click)="loadNextMatches()" class="btn btn-primary">Load next 15 matches</button>
-<button type="button" (click)="runDataImport()" class="btn btn-primary">Run data import</button> -->

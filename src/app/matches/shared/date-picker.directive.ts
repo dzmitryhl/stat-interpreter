@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnInit, Output, EventEmitter } from '@angular/core'
+import { Directive, ElementRef, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import * as jquery from "jquery"
 declare const $: JQueryStatic;
 
@@ -8,14 +8,19 @@ declare const $: JQueryStatic;
 export class DatePickerDirective implements OnInit{
   constructor(private elementRef: ElementRef) {}
 
+  @Input() initialValue: Date;
   @Output() dateSelected = new EventEmitter<Date>();
 
   ngOnInit(): void {
-
     let datePickerObj = $(this.elementRef.nativeElement);
     datePickerObj.datepicker({
       autoclose: true
     });
+
+    if (this.initialValue) {
+      datePickerObj.datepicker('setDate', this.initialValue);
+      this.dateSelected.emit(this.initialValue);
+    }
 
     let that = this;
     datePickerObj.on('changeDate', function(e) {

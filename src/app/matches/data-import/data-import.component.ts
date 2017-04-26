@@ -41,7 +41,6 @@ export class DataImportComponent implements OnInit {
     this.dataImportService.dataLoaded.subscribe(
       (matches: Array<Match>) => {
         if (matches) {
-
           this.competitionFilters = this.getFilterValues(matches);
           this.competitionFilters.push(new CompetitionFilter("", ""));
 
@@ -64,15 +63,6 @@ export class DataImportComponent implements OnInit {
         this.matches = matches;
       }
     );
-    this.dataImportService.loadData();
-  }
-
-  loadNextMatches(): void {
-    this.dataImportService.loadData();
-  }
-
-  runDataImport(): void {
-    this.dataImportService.runDataImport();
   }
 
   getFilterValues(matches: Array<Match>) : Array<CompetitionFilter> {
@@ -83,9 +73,5 @@ export class DataImportComponent implements OnInit {
     }).map(function (match: Match) {
       return new CompetitionFilter(match.location, match.championship);
     });
-  }
-
-  testButtonClicked(): void {
-    console.log("Test Button Clicked");
   }
 }
