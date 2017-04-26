@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class StatInterpretatorPage {
+export class StatInterpreterPage {
   navigateTo() {
     return browser.get('/');
   }

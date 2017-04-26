@@ -23,7 +23,7 @@ export class DatePickerDirective implements OnInit{
     }
 
     let that = this;
-    datePickerObj.on('changeDate', function(e) {
+    datePickerObj.on('changeDate', function(e: any) {
       that.dateSelected.emit(e.date);
     })
   }

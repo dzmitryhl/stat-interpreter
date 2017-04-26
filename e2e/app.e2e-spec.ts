@@ -1,10 +1,10 @@
-import { StatInterpretatorPage } from './app.po';
+import { StatInterpreterPage } from './app.po';
 
-describe('stat-interpretator App', function() {
-  let page: StatInterpretatorPage;
+describe('stat-interpreter App', () => {
+  let page: StatInterpreterPage;
 
   beforeEach(() => {
-    page = new StatInterpretatorPage();
+    page = new StatInterpreterPage();
   });
 
   it('should display message saying app works', () => {
