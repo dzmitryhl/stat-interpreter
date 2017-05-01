@@ -1,0 +1,104 @@
+.vbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.hbox {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.align-content-space-around {
+    align-content: space-around;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+
+.height-100-pecent {
+    height: 100%;
+}
+
+.strategy-select-area {
+    flex: 0 0 30%;
+}
+
+.filters-area {
+    flex: 0 0 70%;
+}
+
+.options-item {
+    flex: 0 0 30%;
+}
+
+.box-border {
+    border: 1px solid red;
+}
+
+
+.flex-item-20p {
+    flex: 0 0 20%;
+}
+
+
+.small-padding {
+    padding: 5px;
+}
+
+.small-margin-bottom {
+    margin-bottom: 7px;
+}
+
+.form-control.small-input {
+    height: 25px;
+    padding: 6px;
+}
+
+
+
+
+.flex-container {
+    align-items: stretch;
+}
+
+
+.flex-item-inner-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+
+/*.flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.checkbox.no-margin {
+    margin-bottom: 0px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}*/

@@ -1,26 +1,108 @@
-<form class="form-horizontal" (ngSubmit)="handleFormSubmit(f.value)" #f="ngForm">
-  <fieldset>
-    <legend>Filter Panel</legend>
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="period">Select list:</label>
-      <div class="col-md-4">
-        <select id="period"
-                class="form-control"
-                ngModel
-                name="period"
-                #period="ngModel">
-          <option *ngFor="let period of periods" [ngValue]="period.id">{{period.name}} | {{period.from | date: 'dd/MM/yyyy'}} - {{period.to | date: 'dd/MM/yyyy'}}</option>
-        </select>
+<div class="panel panel-default">
+  <div class="panel-heading">Action Panel</div>
+  <div class="panel-body">
+
+
+    <div class="hbox height-100-pecent">
+      <div class="strategy-select-area">
+
+
+        <div class="vbox">
+          <h4>Strategy:</h4>
+          <div class="radio">
+            <label><input type="radio" name="optradio">Favorite scores</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">Outsider scores</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">X</label>
+          </div>
+        </div>
+
+
       </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-4" for="submitButton"> </label>
-      <div class="col-md-4">
-        <button id="submitButton" type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+
+      <div class="filters-area">
+        <div class="vbox height-100-pecent">
+          <h4>Options:</h4>
+          <div class="hbox align-content-space-around">
+            <div class="options-item">
+              <div class="vbox small-padding">
+                <h5>Favorite Coefficient:</h5>
+                <div class="hbox justify-content-space-between small-margin-bottom">
+                  <div class="flex-item-20p">
+                    <input [(ngModel)]="favoriteCoefficientMin" type="text small-input" class="form-control small-input">
+                  </div>
+                  <div class="flex-item-20p">
+                    <input [(ngModel)]="favoriteCoefficientMax" type="text" class="form-control small-input">
+                  </div>
+                </div>
+                <div appRangeSlider
+                  [step]="coefficientStep"
+                  [rangeMin]="favoriteCoefficientRangeMin"
+                  [rangeMax]="favoriteCOefficientRangeMax"
+                  [valueMin]="favoriteCoefficientMin"
+                  [valueMax]="favoriteCoefficientMax"
+                  (minValueChanged)="handleMinValueChanged($event)"
+                  (maxValueChanged)="handleMaxValueChanged($event)"></div>
+              </div>
+            </div>
+            <!--<div class="options-item">
+              <div class="vbox small-padding">
+                <h5>Slider name</h5>
+                <div appRangeSlider></div>
+              </div>
+            </div>
+            <div class="options-item">
+              <div class="vbox small-padding">
+                <h5>Slider name</h5>
+                <div appRangeSlider></div>
+              </div>
+            </div>
+            <div class="options-item">
+              <div class="vbox small-padding">
+                <h5>Slider name</h5>
+                <div appRangeSlider></div>
+              </div>
+            </div>-->
+          </div>
+        <div>
+
+
       </div>
+
+
+      <!--<div class="col-md-3 vbox">
+        <h4>Strategy:</h4>
+        <div class="radio">
+          <label><input type="radio" name="optradio">Favorite scores</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">Outsider scores</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">X</label>
+        </div>
+      </div>
+
+
+      <div class="col-md-3 vbox">
+        <h4>Options:</h4>
+        <div class="row flex-item-inner-horizontal">
+
+          <div appRangeSlider></div>
+        </div>
+      </div>-->
+
     </div>
-  </fieldset>
-</form>
 
 
 
+    <!--<div class="row panel-flex-container">
+      <div class="col-md-3">
+        Test
+      </div>
+    </div>-->
+  </div>
+</div>

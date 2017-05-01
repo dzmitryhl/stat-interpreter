@@ -25,6 +25,7 @@ import { FilterMatchDateRangeStartPipe } from './pipes/filter-match-date-range-s
 import { FilterMatchDateRangeEndPipe } from './pipes/filter-match-date-range-end.pipe';
 import { FilterMatchCompletenessPipe } from './pipes/filter-match-completeness.pipe';
 import { DataImportActionPanelComponent } from './data-import/data-import-action-panel/data-import-action-panel.component';
+import { RangeSliderDirective } from './shared/range-slider.directive';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { DataImportActionPanelComponent } from './data-import/data-import-action
     FilterMatchDateRangeStartPipe,
     FilterMatchDateRangeEndPipe,
     FilterMatchCompletenessPipe,
-    DataImportActionPanelComponent
+    DataImportActionPanelComponent,
+    RangeSliderDirective
   ],
   exports: [MatchesComponent],
   providers: [MatchService, DataImportService]

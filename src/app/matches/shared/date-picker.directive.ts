@@ -5,7 +5,7 @@ declare const $: JQueryStatic;
 @Directive({
   selector: '[appDatePicker]'
 })
-export class DatePickerDirective implements OnInit{
+export class DatePickerDirective implements OnInit {
   constructor(private elementRef: ElementRef) {}
 
   @Input() initialValue: Date;
@@ -13,6 +13,7 @@ export class DatePickerDirective implements OnInit{
 
   ngOnInit(): void {
     let datePickerObj = $(this.elementRef.nativeElement);
+
     datePickerObj.datepicker({
       autoclose: true
     });
