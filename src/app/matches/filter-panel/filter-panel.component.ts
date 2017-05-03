@@ -11,13 +11,26 @@ export class FilterPanelComponent implements OnInit {
 
   periods: Period[];
 
-  favoriteCoefficientRangeMin: number = 0;
+  favoriteCoefficientRangeMin: number = 1;
   favoriteCOefficientRangeMax: number = 5;
+
+  outsiderCoefficientRangeMin: number = 1;
+  outsiderCOefficientRangeMax: number = 20;
+
+  timeRangeMin: number = 1;
+  timeRangeMax: number = 90;
   
-  favoriteCoefficientMin: number = 1;
-  favoriteCoefficientMax: number = 2;
+  favoriteCoefficientMin: number = 2;
+  favoriteCoefficientMax: number = 3.5;
+
+  outsiderCoefficientMin: number = 3;
+  outsiderCoefficientMax: number = 6;
+
+  timeMin: number = 41;
+  timeMax: number = 49;
 
   coefficientStep: number = 0.05;
+  timeStep: number = 1;
 
   constructor(private matchService: MatchService) { }
 
@@ -32,11 +45,27 @@ export class FilterPanelComponent implements OnInit {
     this.matchService.loadData(formData);
   }
 
-  handleMinValueChanged(value: number) {
+  handleFavoriteMinValueChanged(value: number) {
     this.favoriteCoefficientMin = value;
   }
 
-  handleMaxValueChanged(value: number) {
+  handleFavoriteMaxValueChanged(value: number) {
     this.favoriteCoefficientMax = value;
+  }
+
+  handleOutsiderMinValueChanged(value: number) {
+    this.outsiderCoefficientMin = value;
+  }
+
+  handleOutsiderMaxValueChanged(value: number) {
+    this.outsiderCoefficientMax = value;
+  }
+
+  handleTimeMinValueChanged(value: number) {
+    this.timeMin = value;
+  }
+
+  handleTimeMaxValueChanged(value: number) {
+    this.timeMax = value;
   }
 }

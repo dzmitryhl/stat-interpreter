@@ -19,24 +19,32 @@
             <label><input type="radio" name="optradio">X</label>
           </div>
         </div>
-
-
       </div>
-
       <div class="filters-area">
         <div class="vbox height-100-pecent">
           <h4>Options:</h4>
           <div class="hbox align-content-space-around">
             <div class="options-item">
-              <div class="vbox small-padding">
-                <h5>Favorite Coefficient:</h5>
-                <div class="hbox justify-content-space-between small-margin-bottom">
-                  <div class="flex-item-20p">
-                    <input [(ngModel)]="favoriteCoefficientMin" type="text small-input" class="form-control small-input">
+              <div class="vbox mediumMarginEnd">
+                <b>Favorite Coefficient:</b>
+                <div class="hbox justify-content-space-between smallMarginTopBottom">
+                  <div class="flex-item-30p">
+                    <div class="hbox noWrap align-items-center">
+                      <input [(ngModel)]="favoriteCoefficientMin" type="text" class="form-control small-input">
+                      <a href="#" class="xSmallMargin">
+                        <span class="glyphicon glyphicon-remove"></span>
+                      </a>
+                    </div>
                   </div>
-                  <div class="flex-item-20p">
-                    <input [(ngModel)]="favoriteCoefficientMax" type="text" class="form-control small-input">
+                  <div class="flex-item-30p">
+                    <div class="hbox noWrap align-items-center">
+                      <a href="#" class="xSmallMargin">
+                        <span class="glyphicon glyphicon-remove"></span>
+                      </a>
+                      <input [(ngModel)]="favoriteCoefficientMax" type="text" class="form-control small-input">
+                    </div>
                   </div>
+                  
                 </div>
                 <div appRangeSlider
                   [step]="coefficientStep"
@@ -44,28 +52,52 @@
                   [rangeMax]="favoriteCOefficientRangeMax"
                   [valueMin]="favoriteCoefficientMin"
                   [valueMax]="favoriteCoefficientMax"
-                  (minValueChanged)="handleMinValueChanged($event)"
-                  (maxValueChanged)="handleMaxValueChanged($event)"></div>
-              </div>
-            </div>
-            <!--<div class="options-item">
-              <div class="vbox small-padding">
-                <h5>Slider name</h5>
-                <div appRangeSlider></div>
+                  (minValueChanged)="handleFavoriteMinValueChanged($event)"
+                  (maxValueChanged)="handleFavoriteMaxValueChanged($event)"></div>
               </div>
             </div>
             <div class="options-item">
-              <div class="vbox small-padding">
-                <h5>Slider name</h5>
-                <div appRangeSlider></div>
+              <div class="vbox mediumMarginBeginEnd">
+                <b>Outsider Coefficient:</b>
+                <div class="hbox justify-content-space-between smallMarginTopBottom">
+                  <div class="flex-item-20p">
+                    <input [(ngModel)]="outsiderCoefficientMin" type="text small-input" class="form-control small-input">
+                  </div>
+                  <div class="flex-item-20p">
+                    <input [(ngModel)]="outsiderCoefficientMax" type="text" class="form-control small-input">
+                  </div>
+                </div>
+                <div appRangeSlider
+                  [step]="coefficientStep"
+                  [rangeMin]="outsiderCoefficientRangeMin"
+                  [rangeMax]="outsiderCOefficientRangeMax"
+                  [valueMin]="outsiderCoefficientMin"
+                  [valueMax]="outsiderCoefficientMax"
+                  (minValueChanged)="handleOutsiderMinValueChanged($event)"
+                  (maxValueChanged)="handleOutsiderMaxValueChanged($event)"></div>
               </div>
             </div>
             <div class="options-item">
-              <div class="vbox small-padding">
-                <h5>Slider name</h5>
-                <div appRangeSlider></div>
+              <div class="vbox mediumMarginBeginEnd">
+                <b>Time:</b>
+                <div class="hbox justify-content-space-between smallMarginTopBottom">
+                  <div class="flex-item-20p">
+                    <input [(ngModel)]="timeMin" type="text small-input" class="form-control small-input">
+                  </div>
+                  <div class="flex-item-20p">
+                    <input [(ngModel)]="timeMax" type="text" class="form-control small-input">
+                  </div>
+                </div>
+                <div appRangeSlider
+                  [step]="timeStep"
+                  [rangeMin]="timeRangeMin"
+                  [rangeMax]="timeRangeMax"
+                  [valueMin]="timeMin"
+                  [valueMax]="timeMax"
+                  (minValueChanged)="handleTimeMinValueChanged($event)"
+                  (maxValueChanged)="handleTimeMaxValueChanged($event)"></div>
               </div>
-            </div>-->
+            </div>
           </div>
         <div>
 

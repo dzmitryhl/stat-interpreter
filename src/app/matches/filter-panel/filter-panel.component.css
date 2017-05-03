@@ -8,12 +8,20 @@
     flex-flow: row wrap;
 }
 
+.hbox.noWrap {
+    flex-wrap: nowrap;
+}
+
 .align-content-space-around {
     align-content: space-around;
 }
 
 .justify-content-space-between {
     justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
 }
 
 
@@ -30,7 +38,7 @@
 }
 
 .options-item {
-    flex: 0 0 30%;
+    flex: 0 0 28%;
 }
 
 .box-border {
@@ -42,16 +50,54 @@
     flex: 0 0 20%;
 }
 
+.flex-item-25p {
+    flex: 0 0 25%;
+}
+
+.flex-item-30p {
+    flex: 0 0 30%;
+}
+
 
 .small-padding {
     padding: 5px;
 }
 
-.small-margin-bottom {
+
+.xSmallMargin {
+    margin: 3px;
+}
+
+.smallMarginBottom {
     margin-bottom: 7px;
 }
 
+.smallMarginTop {
+    margin-bottom: 7px;
+}
+
+.smallMarginTopBottom {
+    margin-bottom: 7px;
+    margin-top: 7px;
+}
+
+.smallMarginBeginEnd {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.mediumMarginBeginEnd {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.mediumMarginEnd {
+    margin-right: 12px;
+}
+
 .form-control.small-input {
+    text-align: center;
+    min-width: 25px;
     height: 25px;
     padding: 6px;
 }
