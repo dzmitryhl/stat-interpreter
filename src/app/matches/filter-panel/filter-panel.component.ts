@@ -11,8 +11,8 @@ export class FilterPanelComponent implements OnInit {
 
   periods: Period[];
 
-  favoriteCoefficientRangeMin: number = 1;
-  favoriteCOefficientRangeMax: number = 5;
+  favoriteCoefficientRangeMin: any = 1;
+  favoriteCOefficientRangeMax: any = 5;
 
   outsiderCoefficientRangeMin: number = 1;
   outsiderCOefficientRangeMax: number = 20;
@@ -68,4 +68,12 @@ export class FilterPanelComponent implements OnInit {
   handleTimeMaxValueChanged(value: number) {
     this.timeMax = value;
   }
+
+  // setMinSafeInteger(): number {
+  //   return Number.MIN_SAFE_INTEGER;
+  // }
+
+  // setMaxSafeInteger(): number {
+  //   return Number.MAX_SAFE_INTEGER;
+  // }
 }

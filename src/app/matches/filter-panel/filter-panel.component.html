@@ -30,18 +30,18 @@
                 <div class="hbox justify-content-space-between smallMarginTopBottom">
                   <div class="flex-item-30p">
                     <div class="hbox noWrap align-items-center">
-                      <input [(ngModel)]="favoriteCoefficientMin" type="text" class="form-control small-input">
-                      <a href="#" class="xSmallMargin">
+                      <input [value]="favoriteCoefficientMin | formatNullValue: '-'" (input)="favoriteCoefficientMin=$event.target.value" type="text" class="form-control small-input">
+                      <a (click)="favoriteCoefficientMin=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                   <div class="flex-item-30p">
                     <div class="hbox noWrap align-items-center">
-                      <a href="#" class="xSmallMargin">
+                      <input [value]="favoriteCoefficientMax | formatNullValue: '-'" (input)="favoriteCoefficientMax=$event.target.value" type="text" class="form-control small-input">
+                      <a (click)="favoriteCoefficientMax=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
-                      <input [(ngModel)]="favoriteCoefficientMax" type="text" class="form-control small-input">
                     </div>
                   </div>
                   
