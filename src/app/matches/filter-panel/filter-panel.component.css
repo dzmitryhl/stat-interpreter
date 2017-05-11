@@ -63,38 +63,6 @@
     padding: 5px;
 }
 
-
-.xSmallMargin {
-    margin: 3px;
-}
-
-.smallMarginBottom {
-    margin-bottom: 7px;
-}
-
-.smallMarginTop {
-    margin-bottom: 7px;
-}
-
-.smallMarginTopBottom {
-    margin-bottom: 7px;
-    margin-top: 7px;
-}
-
-.smallMarginBeginEnd {
-    margin-left: 7px;
-    margin-right: 7px;
-}
-
-.mediumMarginBeginEnd {
-    margin-left: 12px;
-    margin-right: 12px;
-}
-
-.mediumMarginEnd {
-    margin-right: 12px;
-}
-
 .form-control.small-input {
     text-align: center;
     min-width: 25px;

@@ -12,25 +12,32 @@ export class FilterPanelComponent implements OnInit {
   periods: Period[];
 
   favoriteCoefficientRangeMin: any = 1;
-  favoriteCOefficientRangeMax: any = 5;
-
-  outsiderCoefficientRangeMin: number = 1;
-  outsiderCOefficientRangeMax: number = 20;
-
-  timeRangeMin: number = 1;
-  timeRangeMax: number = 90;
-  
+  favoriteCoefficientRangeMax: any = 5;
   favoriteCoefficientMin: number = 2;
   favoriteCoefficientMax: number = 3.5;
 
+  outsiderCoefficientRangeMin: number = 1;
+  outsiderCoefficientRangeMax: number = 20;
   outsiderCoefficientMin: number = 3;
   outsiderCoefficientMax: number = 6;
 
+  favoriteScoreRangeMin: number = 0;
+  favoriteScoreRangeMax: number = 5;
+  favoriteScoreMin: number = 0;
+  favoriteScoreMax: number = 2;
+
+  outsiderScoreRangeMin: number = 0;
+  outsiderScoreRangeMax: number = 5;
+  outsiderScoreMin: number = 0;
+  outsiderScoreMax: number = 2;
+
+  timeRangeMin: number = 1;
+  timeRangeMax: number = 90;
   timeMin: number = 41;
   timeMax: number = 49;
 
-  coefficientStep: number = 0.05;
-  timeStep: number = 1;
+  integerStep: number = 1;
+  fractionalStep: number = 0.05;
 
   constructor(private matchService: MatchService) { }
 
@@ -69,11 +76,19 @@ export class FilterPanelComponent implements OnInit {
     this.timeMax = value;
   }
 
-  // setMinSafeInteger(): number {
-  //   return Number.MIN_SAFE_INTEGER;
-  // }
+  handleFavoriteMinScoreChanged(value: number) {
+    this.favoriteScoreMin = value;
+  }
 
-  // setMaxSafeInteger(): number {
-  //   return Number.MAX_SAFE_INTEGER;
-  // }
+  handleFavoriteMaxScorehanged(value: number) {
+    this.favoriteScoreMax = value;
+  }
+
+  handleOutsiderMinScoreChanged(value: number) {
+    this.outsiderScoreMin = value;
+  }
+
+  handleOutsiderMaxScorehanged(value: number) {
+    this.outsiderScoreMax = value;
+  }
 }
