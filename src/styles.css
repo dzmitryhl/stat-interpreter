@@ -1,139 +1,149 @@
 .xSmallMarginBegin {
     margin-left: 3px;
 }
-
 .xSmallMarginEnd {
     margin-right: 3px;
 }
-
 .xSmallMarginBottom {
     margin-bottom: 3px;
 }
-
 .xSmallMarginTop {
     margin-top: 3px;
 }
-
 .xSmallMarginBeginEnd {
     margin-left: 3px;
     margin-right: 3px;
-
 }
 .xSmallMarginTopBottom {
     margin-bottom: 3px;
     margin-top: 3px;
 }
-
 .xSmallMarginBeginEnd {
     margin-left: 3px;
     margin-right: 3px;
 }
-
 .xSmallMargin {
     margin: 3px;
 }
-
 .smallMarginBegin {
     margin-left: 7px;
 }
-
 .smallMarginEnd {
     margin-right: 7px;
 }
-
 .smallMarginBottom {
     margin-bottom: 7px;
 }
-
 .smallMarginTop {
     margin-top: 7px;
 }
-
 .smallMarginBeginEnd {
     margin-left: 7px;
     margin-right: 7px;
-
 }
 .smallMarginTopBottom {
     margin-bottom: 7px;
     margin-top: 7px;
 }
-
 .smallMarginBeginEnd {
     margin-left: 7px;
     margin-right: 7px;
 }
-
 .smallMargin {
     margin: 7px;
 }
-
 .mediumMarginBegin {
     margin-left: 12px;
 }
-
 .mediumMarginEnd {
     margin-right: 12px;
 }
-
 .mediumMarginBottom {
     margin-bottom: 12px;
 }
-
 .mediumMarginTop {
     margin-top: 12px;
 }
-
 .mediumMarginBeginEnd {
     margin-left: 12px;
     margin-right: 12px;
-
 }
 .mediumMarginTopBottom {
     margin-bottom: 12px;
     margin-top: 12px;
 }
-
 .mediumMarginBeginEnd {
     margin-left: 12px;
     margin-right: 12px;
 }
-
 .mediumMargin {
     margin: 12px;
 }
-
 .largeMarginBegin {
     margin-left: 18px;
 }
-
 .largeMarginEnd {
     margin-right: 18px;
 }
-
 .largeMarginBottom {
     margin-bottom: 18px;
 }
-
 .largeMarginTop {
     margin-top: 18px;
 }
-
 .largeMarginBeginEnd {
     margin-left: 18px;
     margin-right: 18px;
-
 }
 .largeMarginTopBottom {
     margin-bottom: 18px;
     margin-top: 18px;
 }
-
 .largeMarginBeginEnd {
     margin-left: 18px;
     margin-right: 18px;
 }
-
 .largeMargin {
     margin: 18px;
+}
+
+.vBox {
+  display: flex;
+  flex-direction: column;
+}
+.hBox {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.flexItem-20 {
+  flex: 0 0 20%;
+}
+
+.flexItem-25 {
+  flex: 0 0 25%;
+}
+
+.flexItem-30 {
+  flex: 0 0 30%;
+}
+
+.flexItem-70 {
+  flex: 0 0 70%;
+}
+
+.alignContentSpaceAround {
+  align-content: space-around;
+}
+
+.justifyContentSpaceBetween {
+  justify-content: space-between;
+}
+
+.justifyContentCenter {
+  justify-content: center;
+}
+
+.alignItemsCenter {
+  align-items: center;
 }

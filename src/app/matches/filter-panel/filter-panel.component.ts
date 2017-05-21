@@ -80,7 +80,7 @@ export class FilterPanelComponent implements OnInit {
     this.favoriteScoreMin = value;
   }
 
-  handleFavoriteMaxScorehanged(value: number) {
+  handleFavoriteMaxScoreChanged(value: number) {
     this.favoriteScoreMax = value;
   }
 
@@ -88,7 +88,7 @@ export class FilterPanelComponent implements OnInit {
     this.outsiderScoreMin = value;
   }
 
-  handleOutsiderMaxScorehanged(value: number) {
+  handleOutsiderMaxScoreChanged(value: number) {
     this.outsiderScoreMax = value;
   }
 }

@@ -1,66 +1,5 @@
-.vbox {
-    display: flex;
-    flex-direction: column;
-}
-
-.hbox {
-    display: flex;
-    flex-flow: row wrap;
-}
-
-.hbox.noWrap {
+.hBox.noWrap {
     flex-wrap: nowrap;
-}
-
-.align-content-space-around {
-    align-content: space-around;
-}
-
-.justify-content-space-between {
-    justify-content: space-between;
-}
-
-.align-items-center {
-    align-items: center;
-}
-
-
-.height-100-pecent {
-    height: 100%;
-}
-
-.strategy-select-area {
-    flex: 0 0 30%;
-}
-
-.filters-area {
-    flex: 0 0 70%;
-}
-
-.options-item {
-    flex: 0 0 28%;
-}
-
-.box-border {
-    border: 1px solid red;
-}
-
-
-.flex-item-20p {
-    flex: 0 0 20%;
-}
-
-.flex-item-25p {
-    flex: 0 0 25%;
-}
-
-.flex-item-30p {
-    flex: 0 0 30%;
-}
-
-
-.small-padding {
-    padding: 5px;
 }
 
 .form-control.small-input {
@@ -70,13 +9,9 @@
     padding: 6px;
 }
 
-
-
-
 .flex-container {
     align-items: stretch;
 }
-
 
 .flex-item-inner-horizontal {
     display: flex;
@@ -84,8 +19,14 @@
     align-items: center;
 }
 
+.strategyOptionsContainer {
+  width: 150px;
+}
 
 
+.optionsRow {
+  width: 100%;
+}
 /*.flex-container {
     display: flex;
     flex-direction: row;
