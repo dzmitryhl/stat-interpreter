@@ -13,19 +13,15 @@ export class DatePickerDirective implements OnInit {
 
   ngOnInit(): void {
     let datePickerObj = $(this.elementRef.nativeElement);
-
+    let that = this;
     datePickerObj.datepicker({
-      autoclose: true
+      onSelect: function(options: any) {
+        that.dateSelected.emit(new Date(options));
+      }
     });
-
     if (this.initialValue) {
       datePickerObj.datepicker('setDate', this.initialValue);
       this.dateSelected.emit(this.initialValue);
     }
-
-    let that = this;
-    datePickerObj.on('changeDate', function(e: any) {
-      that.dateSelected.emit(e.date);
-    })
   }
 }

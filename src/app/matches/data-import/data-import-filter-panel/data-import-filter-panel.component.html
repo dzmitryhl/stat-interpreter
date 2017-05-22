@@ -21,23 +21,25 @@
       <div class="col-md-2">
         <div class="form-group">
           <label for="startDate">Start Date:</label>
-          <div appDatePicker (dateSelected)="startDateSelected($event)" class="input-group date">
-            <input placeholder="" class="form-control" type="text" name="startDate" required>
-            <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
-            </span>
-          </div>
+          <input appDatePicker 
+            placeholder=""
+            type="text"
+            name="startDate"
+            class="form-control"
+            (dateSelected)="startDateSelected($event)"
+            required>
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <label for="endDate">End Date:</label>
-          <div appDatePicker (dateSelected)="endDateSelected($event)" class="input-group date">
-            <input placeholder="" class="form-control" type="text" name="endDate" required>
-            <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
-            </span>
-          </div>
+          <input appDatePicker 
+            placeholder=""
+            type="text"
+            name="startDate"
+            class="form-control"
+            (dateSelected)="endDateSelected($event)"
+            required>
         </div>
       </div>
       <div class="col-md-2">
