@@ -15,6 +15,12 @@ export class DatePickerDirective implements OnInit {
     let datePickerObj = $(this.elementRef.nativeElement);
     let that = this;
     datePickerObj.datepicker({
+      beforeShow: function(options: any) {
+        setTimeout(function(){
+            $('.ui-datepicker').css('z-index', 9999);
+        }, 0);
+        return options;
+      },
       onSelect: function(options: any) {
         that.dateSelected.emit(new Date(options));
       }

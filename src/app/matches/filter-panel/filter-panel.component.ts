@@ -1,3 +1,4 @@
+import { LoadChildrenCallback } from '@angular/router/router';
 import { Component, OnInit } from '@angular/core';
 import {Period} from "../../model/period";
 import {MatchService} from "../match.service";
@@ -10,6 +11,11 @@ import {MatchService} from "../match.service";
 export class FilterPanelComponent implements OnInit {
 
   periods: Period[];
+
+  startDate: Date;
+  endDate: Date;
+  limit: number = 0;
+  loadAll: boolean = true;
 
   favoriteCoefficientRangeMin: any = 1;
   favoriteCoefficientRangeMax: any = 5;
@@ -39,6 +45,26 @@ export class FilterPanelComponent implements OnInit {
   integerStep: number = 1;
   fractionalStep: number = 0.05;
 
+  limits: Array<any> = [{
+    value: 0,
+    label: "N Random"
+  }, {
+    value: 100,
+    label: "100 Random"
+  }, {
+    value: 500,
+    label: "500 Random"
+  }, {
+    value: 1000,
+    label: "1000 Random"
+  }, {
+    value: 5000,
+    label: "5000 Random"
+  }, {
+    value: 10000,
+    label: "10000 Random"
+  }]
+
   constructor(private matchService: MatchService) { }
 
   ngOnInit() {
@@ -52,43 +78,29 @@ export class FilterPanelComponent implements OnInit {
     this.matchService.loadData(formData);
   }
 
-  handleFavoriteMinValueChanged(value: number) {
-    this.favoriteCoefficientMin = value;
+  getAllButtonChecked(value: boolean) {
+    this.loadAll = value;
+    this.limit = 0;
+    this.startDate = null;
+    this.endDate = null;
   }
 
-  handleFavoriteMaxValueChanged(value: number) {
-    this.favoriteCoefficientMax = value;
+  limitSelected(value: number) {
+    this.limit = value;
+    this.startDate = null;
+    this.endDate = null;
+    this.loadAll = false;
   }
 
-  handleOutsiderMinValueChanged(value: number) {
-    this.outsiderCoefficientMin = value;
+  startDateSelected(value: Date) {
+    this.startDate = value;
+    this.limit = 0;
+    this.loadAll = false;
   }
 
-  handleOutsiderMaxValueChanged(value: number) {
-    this.outsiderCoefficientMax = value;
-  }
-
-  handleTimeMinValueChanged(value: number) {
-    this.timeMin = value;
-  }
-
-  handleTimeMaxValueChanged(value: number) {
-    this.timeMax = value;
-  }
-
-  handleFavoriteMinScoreChanged(value: number) {
-    this.favoriteScoreMin = value;
-  }
-
-  handleFavoriteMaxScoreChanged(value: number) {
-    this.favoriteScoreMax = value;
-  }
-
-  handleOutsiderMinScoreChanged(value: number) {
-    this.outsiderScoreMin = value;
-  }
-
-  handleOutsiderMaxScoreChanged(value: number) {
-    this.outsiderScoreMax = value;
+  endDateSelected(value: Date) {
+    this.endDate = value;
+    this.limit = 0;
+    this.loadAll = false;
   }
 }

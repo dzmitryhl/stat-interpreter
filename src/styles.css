@@ -116,20 +116,65 @@
   flex-flow: row wrap;
 }
 
+.flexItem-5 {
+  flex: 0 0 5%;
+}
+.flexItem-10 {
+  flex: 0 0 10%;
+}
+.flexItem-15 {
+  flex: 0 0 15%;
+}
 .flexItem-20 {
   flex: 0 0 20%;
 }
-
 .flexItem-25 {
   flex: 0 0 25%;
 }
-
 .flexItem-30 {
   flex: 0 0 30%;
 }
-
+.flexItem-35 {
+  flex: 0 0 35%;
+}
+.flexItem-40 {
+  flex: 0 0 40%;
+}
+.flexItem-45 {
+  flex: 0 0 45%;
+}
+.flexItem-50 {
+  flex: 0 0 50%;
+}
+.flexItem-55 {
+  flex: 0 0 55%;
+}
+.flexItem-60 {
+  flex: 0 0 60%;
+}
+.flexItem-65 {
+  flex: 0 0 65%;
+}
 .flexItem-70 {
   flex: 0 0 70%;
+}
+.flexItem-75 {
+  flex: 0 0 75%;
+}
+.flexItem-80 {
+  flex: 0 0 80%;
+}
+.flexItem-85 {
+  flex: 0 0 85%;
+}
+.flexItem-90 {
+  flex: 0 0 90%;
+}
+.flexItem-95 {
+  flex: 0 0 95%;
+}
+.flexItem-100 {
+  flex: 0 0 100%;
 }
 
 .alignContentSpaceAround {
@@ -146,4 +191,12 @@
 
 .alignItemsCenter {
   align-items: center;
+}
+
+.alignItemsStart {
+    align-items: flex-start;
+}
+
+.alignItemsEnd {
+    align-items: flex-end;
 }
