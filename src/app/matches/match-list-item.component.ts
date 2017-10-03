@@ -1,14 +1,14 @@
+import { Forecast } from './../model/forecast';
 import {Component, Input, OnInit} from '@angular/core';
-import {Match} from "../model/match";
 
 @Component({
-  selector: 'app-match-list-item',
+  selector: '[app-match-list-item]',
   templateUrl: './match-list-item.component.html',
   styleUrls: ['./match-list-item.component.css']
 })
 export class MatchListItemComponent implements OnInit {
 
-  @Input() match : Match;
+  @Input() forecast : Forecast;
 
   constructor() { }
 

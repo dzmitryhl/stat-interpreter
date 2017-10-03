@@ -13,15 +13,14 @@
       <div class="flexItem-30">
         <div class="hBox justifyContentCenter">
           <div class="strategyOptionsContainer">
-            <div class="radio">
-              <label><input type="radio" name="optradio">Favorite scores</label>
-            </div>
-            <div class="radio">
-              <label><input type="radio" name="optradio">Outsider scores</label>
-            </div>
-            <div class="radio">
-              <label><input type="radio" name="optradio">X</label>
-            </div>
+           <div *ngFor="let strategyType of strategyTypes | enumTransform | strategyTypeName">
+              <div class="radio">
+                <label>
+                <input type="radio" name="strategyType" [(ngModel)]="filterValues.strategyType" [value]="strategyType.key">
+                {{strategyType.name}}
+                </label>
+              </div>
+            </div> 
           </div>
         </div>
       </div>
@@ -33,7 +32,7 @@
                   <label for="allMatchesButton" class="btn btn-primary">
                     Load All 
                     <input 
-                      [ngModel]="loadAll" 
+                      [ngModel]="filterValues.loadAll" 
                       (ngModelChange)="getAllButtonChecked($event)"
                       type="checkbox"
                       id="allMatchesButton" 
@@ -50,7 +49,7 @@
               <div class="flexItem-20">
                 <select class="form-control"
                         name="limit"
-                        [ngModel]="limit" 
+                        [ngModel]="filterValues.loadNRandom" 
                         (ngModelChange)="limitSelected($event)">
                   <option *ngFor="let item of limits" [ngValue]="item.value" [disabled]="item.value==0">{{item.label}}</option>
                 </select>
@@ -64,12 +63,12 @@
                 <div class="hBox alignItemsEnd">
                   <label for="startDate">From:</label>
                   <div class="hBox datePickerContainer smallMarginBegin largeMarginEnd">
-                    <input appDatePicker placeholder="" type="text"  [ngModel]="startDate | date:'yMd'" name="startDate" class="form-control" (dateSelected)="startDateSelected($event)"
+                    <input appDatePicker placeholder="" type="text"  [ngModel]="filterValues.interval.startDate | date:'yMd'" name="startDate" class="form-control" (dateSelected)="startDateSelected($event)"
                       required>
                   </div>
                   <label for="startDate">To:</label>
                   <div class="hBox datePickerContainer smallMarginBegin">
-                    <input appDatePicker placeholder="" type="text" [ngModel]="endDate | date:'yMd'" name="startDate" class="form-control" (dateSelected)="endDateSelected($event)"
+                    <input appDatePicker placeholder="" type="text" [ngModel]="filterValues.interval.endDate | date:'yMd'" name="startDate" class="form-control" (dateSelected)="endDateSelected($event)"
                       required>
                   </div>
                 </div>
@@ -82,52 +81,52 @@
                 <div class="hBox justifyContentSpaceBetween smallMarginTopBottom">
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="favoriteCoefficientMin | formatNullValue: '-'" (input)="favoriteCoefficientMin=$event.target.value" type="text"
+                      <input [value]="filterValues.favoriteCoefficientMin | formatNullValue: '-'" (input)="filterValues.favoriteCoefficientMin=$event.target.value" type="text"
                         class="form-control small-input">
-                      <a (click)="favoriteCoefficientMin=null" class="xSmallMargin">
+                      <a (click)="filterValues.favoriteCoefficientMin=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="favoriteCoefficientMax | formatNullValue: '-'" (input)="favoriteCoefficientMax=$event.target.value" type="text"
+                      <input [value]="filterValues.favoriteCoefficientMax | formatNullValue: '-'" (input)="filterValues.favoriteCoefficientMax=$event.target.value" type="text"
                         class="form-control small-input">
-                      <a (click)="favoriteCoefficientMax=null" class="xSmallMargin">
+                      <a (click)="filterValues.favoriteCoefficientMax=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div appRangeSlider [step]="fractionalStep" [rangeMin]="favoriteCoefficientRangeMin" [rangeMax]="favoriteCoefficientRangeMax"
-                  [valueMin]="favoriteCoefficientMin" [valueMax]="favoriteCoefficientMax" (minValueChanged)="favoriteCoefficientMin = $event"
-                  (maxValueChanged)="favoriteCoefficientMax = $event"></div>
+                <div appRangeSlider [step]="filterValues.fractionalStep" [rangeMin]="filterValues.favoriteCoefficientRangeMin" [rangeMax]="filterValues.favoriteCoefficientRangeMax"
+                  [valueMin]="filterValues.favoriteCoefficientMin" [valueMax]="filterValues.favoriteCoefficientMax" (minValueChanged)="filterValues.favoriteCoefficientMin = $event"
+                  (maxValueChanged)="filterValues.favoriteCoefficientMax = $event"></div>
               </div>
               <div class="vBox largeMarginTopBottom">
                 <b>Outsider Coefficient:</b>
                 <div class="hBox justifyContentSpaceBetween smallMarginTopBottom">
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="outsiderCoefficientMin | formatNullValue: '-'" (input)="outsiderCoefficientMin=$event.target.value" type="text"
+                      <input [value]="filterValues.outsiderCoefficientMin | formatNullValue: '-'" (input)="filterValues.outsiderCoefficientMin=$event.target.value" type="text"
                         class="form-control small-input">
-                      <a (click)="outsiderCoefficientMin=null" class="xSmallMargin">
+                      <a (click)="filterValues.outsiderCoefficientMin=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="outsiderCoefficientMax | formatNullValue: '-'" (input)="outsiderCoefficientMax=$event.target.value" type="text"
+                      <input [value]="filterValues.outsiderCoefficientMax | formatNullValue: '-'" (input)="filterValues.outsiderCoefficientMax=$event.target.value" type="text"
                         class="form-control small-input">
-                      <a (click)="outsiderCoefficientMax=null" class="xSmallMargin">
+                      <a (click)="filterValues.outsiderCoefficientMax=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div appRangeSlider [step]="fractionalStep" [rangeMin]="outsiderCoefficientRangeMin" [rangeMax]="outsiderCoefficientRangeMax"
-                  [valueMin]="outsiderCoefficientMin" [valueMax]="outsiderCoefficientMax" (minValueChanged)="outsiderCoefficientMin = $event"
-                  (maxValueChanged)="outsiderCoefficientMax = $event"></div>
+                <div appRangeSlider [step]="filterValues.fractionalStep" [rangeMin]="filterValues.outsiderCoefficientRangeMin" [rangeMax]="filterValues.outsiderCoefficientRangeMax"
+                  [valueMin]="filterValues.outsiderCoefficientMin" [valueMax]="filterValues.outsiderCoefficientMax" (minValueChanged)="filterValues.outsiderCoefficientMin = $event"
+                  (maxValueChanged)="filterValues.outsiderCoefficientMax = $event"></div>
               </div>
             </div>
             <div class="flexItem-30 largeMarginEnd">
@@ -136,46 +135,46 @@
                 <div class="hBox justifyContentSpaceBetween smallMarginTopBottom">
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="favoriteScoreMin | formatNullValue: '-'" (input)="favoriteScoreMin=$event.target.value" type="text" class="form-control small-input">
-                      <a (click)="favoriteScoreMin=null" class="xSmallMargin">
+                      <input [value]="filterValues.favoriteScoreMin | formatNullValue: '-'" (input)="filterValues.favoriteScoreMin=$event.target.value" type="text" class="form-control small-input">
+                      <a (click)="filterValues.favoriteScoreMin=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="favoriteScoreMax | formatNullValue: '-'" (input)="favoriteScoreMax=$event.target.value" type="text" class="form-control small-input">
-                      <a (click)="favoriteScoreMax=null" class="xSmallMargin">
+                      <input [value]="filterValues.favoriteScoreMax | formatNullValue: '-'" (input)="filterValues.favoriteScoreMax=$event.target.value" type="text" class="form-control small-input">
+                      <a (click)="filterValues.favoriteScoreMax=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div appRangeSlider [step]="integerStep" [rangeMin]="favoriteScoreRangeMin" [rangeMax]="favoriteScoreRangeMax" [valueMin]="favoriteScoreMin"
-                  [valueMax]="favoriteScoreMax" (minValueChanged)="favoriteScoreMin = $event" (maxValueChanged)="favoriteScoreMax = $event"></div>
+                <div appRangeSlider [step]="filterValues.integerStep" [rangeMin]="filterValues.favoriteScoreRangeMin" [rangeMax]="filterValues.favoriteScoreRangeMax" [valueMin]="filterValues.favoriteScoreMin"
+                  [valueMax]="filterValues.favoriteScoreMax" (minValueChanged)="filterValues.favoriteScoreMin = $event" (maxValueChanged)="filterValues.favoriteScoreMax = $event"></div>
               </div>
               <div class="vBox largeMarginTopBottom">
                 <b>Outsider Score:</b>
                 <div class="hBox justifyContentSpaceBetween smallMarginTopBottom">
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="outsiderScoreMin | formatNullValue: '-'" (input)="outsiderScoreMin=$event.target.value" type="text" class="form-control small-input">
-                      <a (click)="outsiderScoreMin=null" class="xSmallMargin">
+                      <input [value]="filterValues.outsiderScoreMin | formatNullValue: '-'" (input)="filterValues.outsiderScoreMin=$event.target.value" type="text" class="form-control small-input">
+                      <a (click)="filterValues.outsiderScoreMin=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="outsiderScoreMax | formatNullValue: '-'" (input)="outsiderScoreMax=$event.target.value" type="text" class="form-control small-input">
-                      <a (click)="outsiderScoreMax=null" class="xSmallMargin">
+                      <input [value]="filterValues.outsiderScoreMax | formatNullValue: '-'" (input)="filterValues.outsiderScoreMax=$event.target.value" type="text" class="form-control small-input">
+                      <a (click)="filterValues.outsiderScoreMax=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div appRangeSlider [step]="integerStep" [rangeMin]="outsiderScoreRangeMin" [rangeMax]="outsiderScoreRangeMax" [valueMin]="outsiderScoreMin"
-                  [valueMax]="outsiderScoreMax" (minValueChanged)="outsiderScoreMin = $event" (maxValueChanged)="outsiderScoreMax = $event"></div>
+                <div appRangeSlider [step]="filterValues.integerStep" [rangeMin]="filterValues.outsiderScoreRangeMin" [rangeMax]="filterValues.outsiderScoreRangeMax" [valueMin]="filterValues.outsiderScoreMin"
+                  [valueMax]="filterValues.outsiderScoreMax" (minValueChanged)="filterValues.outsiderScoreMin = $event" (maxValueChanged)="filterValues.outsiderScoreMax = $event"></div>
               </div>
             </div>
             <div class="flexItem-30 largeMarginEnd">
@@ -184,23 +183,23 @@
                 <div class="hBox justifyContentSpaceBetween smallMarginTopBottom">
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="timeMin | formatNullValue: '-'" (input)="timeMin=$event.target.value" type="text" class="form-control small-input">
-                      <a (click)="timeMin=null" class="xSmallMargin">
+                      <input [value]="filterValues.timeMin | formatNullValue: '-'" (input)="filterValues.timeMin=$event.target.value" type="text" class="form-control small-input">
+                      <a (click)="filterValues.timeMin=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                   <div class="flexItem-30">
                     <div class="hBox noWrap alignItemsCenter">
-                      <input [value]="timeMax | formatNullValue: '-'" (input)="timeMax=$event.target.value" type="text" class="form-control small-input">
-                      <a (click)="timeMax=null" class="xSmallMargin">
+                      <input [value]="filterValues.timeMax | formatNullValue: '-'" (input)="filterValues.timeMax=$event.target.value" type="text" class="form-control small-input">
+                      <a (click)="filterValues.timeMax=null" class="xSmallMargin">
                         <span class="glyphicon glyphicon-remove"></span>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div appRangeSlider [step]="integerStep" [rangeMin]="timeRangeMin" [rangeMax]="timeRangeMax" [valueMin]="timeMin" [valueMax]="timeMax"
-                  (minValueChanged)="timeMin = $event" (maxValueChanged)="timeMax = $event"></div>
+                <div appRangeSlider [step]="filterValues.integerStep" [rangeMin]="filterValues.timeRangeMin" [rangeMax]="filterValues.timeRangeMax" [valueMin]="filterValues.timeMin" [valueMax]="filterValues.timeMax"
+                  (minValueChanged)="filterValues.timeMin = $event" (maxValueChanged)="filterValues.timeMax = $event"></div>
               </div>
             </div>
           </div>
@@ -211,8 +210,8 @@
                   <label class="radio-inline">
                     <input
                       type="checkbox"
-                      [(ngModel)]="uncompletedOnly">
-                    Load Uncompleted Only
+                      [(ngModel)]="filterValues.showHistory">
+                    Load History
                   </label>
                 </div>
               </div>
@@ -223,22 +222,15 @@
                   <label class="radio-inline">
                     <input
                       type="checkbox"
-                      [(ngModel)]="uncompletedOnly">
-                    Load Uncompleted Only
+                      [(ngModel)]="filterValues.showDetails">
+                    Include Details
                   </label>
                 </div>
               </div>
             </div>
             <div class="flexItem-30 largeMarginEnd">
-              <div class="hBox">
-                <div class="checkbox">
-                  <label class="radio-inline">
-                    <input
-                      type="checkbox"
-                      [(ngModel)]="uncompletedOnly">
-                    Load Uncompleted Only
-                  </label>
-                </div>
+              <div class="hBox justifyContentCenter">
+                <button type="button" (click)="loadData()" class="btn btn-primary">Load Data</button>
               </div>
             </div>
           </div>

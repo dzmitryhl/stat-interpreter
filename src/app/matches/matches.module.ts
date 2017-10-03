@@ -27,6 +27,10 @@ import { FilterMatchCompletenessPipe } from './pipes/filter-match-completeness.p
 import { DataImportActionPanelComponent } from './data-import/data-import-action-panel/data-import-action-panel.component';
 import { RangeSliderDirective } from './shared/range-slider.directive';
 import { FormatNullValuePipe } from './pipes/format-null-value.pipe';
+import { EnumTransformPipe } from './pipes/enum-transform.pipe';
+
+import { APP_CONFIG, CONFIG } from '../app.config';
+import { StrategyTypeNamePipe } from './pipes/strategy-type-name.pipe';
 
 @NgModule({
   imports: [
@@ -59,9 +63,17 @@ import { FormatNullValuePipe } from './pipes/format-null-value.pipe';
     FilterMatchCompletenessPipe,
     DataImportActionPanelComponent,
     RangeSliderDirective,
-    FormatNullValuePipe
+    FormatNullValuePipe,
+    EnumTransformPipe,
+    StrategyTypeNamePipe
   ],
   exports: [MatchesComponent],
-  providers: [MatchService, DataImportService]
+  providers: [
+    MatchService,
+    DataImportService,
+    {
+      provide: APP_CONFIG,
+      useValue: CONFIG
+    }]
 })
 export class MatchesModule { }

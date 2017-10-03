@@ -40,12 +40,33 @@ export class DataImportService {
       );
   }
 
-  saveRow(data) {
+  // saveRow(data) {
+  //   const body = JSON.stringify(data);
+  //   const headers = new Headers({
+  //     'Content-Type': 'application/json'
+  //   });
+  //   return this.http.post('http://localhost:8080/saveRow', body, {
+  //     headers: headers
+  //   })
+  //     .subscribe(
+  //       (response: Response) => {
+  //         if (response.status === 200) {
+
+  //         }
+  //       },
+  //       (error: any) => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
+
+
+  updateMatchResult(data) {
     const body = JSON.stringify(data);
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:8080/saveRow', body, {
+    return this.http.post('http://localhost:8080/updateMatchResult', body, {
       headers: headers
     })
       .subscribe(

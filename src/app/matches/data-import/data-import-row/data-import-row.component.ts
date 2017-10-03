@@ -23,7 +23,13 @@ export class DataImportRowComponent implements OnInit {
 
   handleFormSubmit() {
     this.buttonClicked = true;
-    this.dataImportService.saveRow(this.row);
+    this.dataImportService.updateMatchResult({
+      matchId: this.row.id,
+      homeTeamScore: this.row.score1,
+      awayTeamScore: this.row.score2
+    });
+    
+    //this.dataImportService.saveRow(this.row);
   }
 
   handleGoogleSearch() {

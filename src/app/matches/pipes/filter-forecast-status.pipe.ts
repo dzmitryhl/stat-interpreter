@@ -10,11 +10,11 @@ export class FilterForecastStatusPipe implements PipeTransform {
     if (value && value.length !== 0 && (args === 'success' || args === 'failure' || args === 'uncompleted')) {
       return value.filter(function(forecast: Forecast) {
         if (args === 'success') {
-          return forecast.winning;
+          return forecast.isWinning;
         } else if (args === 'failure') {
-          return !forecast.winning && forecast.completed;
+          return !forecast.isWinning && forecast.isCompleted;
         } else {
-          return !forecast.winning && !forecast.completed;
+          return !forecast.isWinning && !forecast.isCompleted;
         }
       });
     }

@@ -17,7 +17,7 @@
           [(ngModel)]="row.score2"
           name="score2"
           required>
-    <button type="submit" class="btn btn-primary margin-tb-small" [disabled]="!row.reconstructed || buttonClicked">Submit</button>
+    <button type="submit" class="btn btn-primary margin-tb-small" [disabled]="buttonClicked">Submit</button>
   </form>
-  <button *ngIf="row.reconstructed && row.scoreTime === 90" type="button" (click)="handleGoogleSearch()" class="btn btn-primary flex-item">Search in Google</button>
+  <button type="button" (click)="handleGoogleSearch()" class="btn btn-primary flex-item">Search in Google</button>
 </div>

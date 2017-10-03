@@ -1,6 +1,37 @@
 <app-filter-panel></app-filter-panel>
 
-<div class="row">
+
+<!-- <div class="test">test</div>
+<ul class="list-group">
+  <app-match-list-item *ngFor="let forecast of forecasts" [match]="match"></app-match-list-item>
+</ul> -->
+
+
+
+<ng-container *ngFor="let partialResult of data?.partialResults">
+  <div class="">Total: {{partialResult.total}}, Number of Bets: {{partialResult.numberOfBets}}</div>
+  <table class="table table-bordered" id="forecasts-table">
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Sum</th>
+        <th>Coefficient</th>
+        <th>Minute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr app-match-list-item *ngFor="let forecast of partialResult?.forecasts" [forecast]="forecast"></tr>
+    </tbody>
+  </table>
+</ng-container>
+
+
+
+
+
+
+
+<!-- <div class="row">
   <div class="panel panel-default filterable">
     <div class="panel-heading">
       <div class="clearfix">
@@ -38,5 +69,4 @@
       </tbody>
     </table>
   </div>
-</div>
-
+</div> -->

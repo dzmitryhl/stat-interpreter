@@ -1,3 +1,4 @@
+import { TotalResult } from './../model/totalResult';
 import { Component, OnInit } from '@angular/core';
 import {Match} from "../model/match";
 import {MatchService} from "./match.service";
@@ -13,6 +14,8 @@ export class MatchListComponent implements OnInit {
   forecasts: Forecast[];
   filterPanelOpened: boolean = false;
 
+  data: TotalResult;
+
   get status(): string {
     return this.matchService.status;
   }
@@ -22,6 +25,9 @@ export class MatchListComponent implements OnInit {
   ngOnInit() {
     this.matchService.forecastsChanged.subscribe(
       (forecasts: Forecast[]) => this.forecasts = forecasts
+    );
+    this.matchService.strategyRequstCompleted.subscribe(
+      (data: TotalResult) => this.data = data
     );
   }
 

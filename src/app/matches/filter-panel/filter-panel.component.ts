@@ -1,7 +1,9 @@
 import { LoadChildrenCallback } from '@angular/router/router';
-import { Component, OnInit } from '@angular/core';
-import {Period} from "../../model/period";
-import {MatchService} from "../match.service";
+import { Component, OnInit, Injector } from '@angular/core';
+import { Period } from "../../model/period";
+import { StrategyType } from "../../model/strategyType";
+import { MatchService } from "../match.service";
+import { APP_CONFIG } from "../../app.config"
 
 @Component({
   selector: 'app-filter-panel',
@@ -11,39 +13,8 @@ import {MatchService} from "../match.service";
 export class FilterPanelComponent implements OnInit {
 
   periods: Period[];
-
-  startDate: Date;
-  endDate: Date;
-  limit: number = 0;
-  loadAll: boolean = true;
-
-  favoriteCoefficientRangeMin: any = 1;
-  favoriteCoefficientRangeMax: any = 5;
-  favoriteCoefficientMin: number = 2;
-  favoriteCoefficientMax: number = 3.5;
-
-  outsiderCoefficientRangeMin: number = 1;
-  outsiderCoefficientRangeMax: number = 20;
-  outsiderCoefficientMin: number = 3;
-  outsiderCoefficientMax: number = 6;
-
-  favoriteScoreRangeMin: number = 0;
-  favoriteScoreRangeMax: number = 5;
-  favoriteScoreMin: number = 0;
-  favoriteScoreMax: number = 2;
-
-  outsiderScoreRangeMin: number = 0;
-  outsiderScoreRangeMax: number = 5;
-  outsiderScoreMin: number = 0;
-  outsiderScoreMax: number = 2;
-
-  timeRangeMin: number = 1;
-  timeRangeMax: number = 90;
-  timeMin: number = 41;
-  timeMax: number = 49;
-
-  integerStep: number = 1;
-  fractionalStep: number = 0.05;
+  strategyTypes: any;
+  filterValues: any = {};
 
   limits: Array<any> = [{
     value: 0,
@@ -63,11 +34,50 @@ export class FilterPanelComponent implements OnInit {
   }, {
     value: 10000,
     label: "10000 Random"
-  }]
+  }];
 
-  constructor(private matchService: MatchService) { }
+  constructor(private matchService: MatchService, private injector: Injector) {}
 
   ngOnInit() {
+    let config = this.injector.get(APP_CONFIG);
+    let defaultFilterValues = config.filterValues;
+
+    this.strategyTypes = StrategyType;
+
+    this.filterValues = {
+      favoriteCoefficientRangeMin: defaultFilterValues.favoriteCoefficientRangeMin,
+      favoriteCoefficientRangeMax: defaultFilterValues.favoriteCoefficientRangeMax,
+      favoriteCoefficientMin: defaultFilterValues.favoriteCoefficientMin,
+      favoriteCoefficientMax: defaultFilterValues.favoriteCoefficientMax,
+      outsiderCoefficientRangeMin: defaultFilterValues.outsiderCoefficientRangeMin,
+      outsiderCoefficientRangeMax: defaultFilterValues.outsiderCoefficientRangeMax,
+      outsiderCoefficientMin: defaultFilterValues.outsiderCoefficientMin,
+      outsiderCoefficientMax: defaultFilterValues.outsiderCoefficientMax,
+      favoriteScoreRangeMin: defaultFilterValues.favoriteScoreRangeMin,
+      favoriteScoreRangeMax: defaultFilterValues.favoriteScoreRangeMax,
+      favoriteScoreMin: defaultFilterValues.favoriteScoreMin,
+      favoriteScoreMax: defaultFilterValues.favoriteScoreMax,
+      outsiderScoreRangeMin: defaultFilterValues.outsiderScoreRangeMin,
+      outsiderScoreRangeMax: defaultFilterValues.outsiderScoreRangeMax,
+      outsiderScoreMin: defaultFilterValues.outsiderScoreMin,
+      outsiderScoreMax: defaultFilterValues.outsiderScoreMax,
+      timeRangeMin: defaultFilterValues.timeRangeMin,
+      timeRangeMax: defaultFilterValues.timeRangeMax,
+      timeMin:defaultFilterValues.timeMin,
+      timeMax: defaultFilterValues.timeMax,
+      integerStep: defaultFilterValues.integerStep,
+      fractionalStep: defaultFilterValues.fractionalStep,
+      loadAll: true,
+      loadNRandom: 0,
+      interval: {
+        startDate: null,
+        endDate: null
+      },
+      strategyType: StrategyType.FAVORITE_SCORED,
+      showHistory: true,
+      showDetails: true
+    }
+
     this.matchService.fetchPeriodsData();
     this.matchService.periodsChanged.subscribe(
       (periods: Period[]) => this.periods = periods
@@ -79,28 +89,32 @@ export class FilterPanelComponent implements OnInit {
   }
 
   getAllButtonChecked(value: boolean) {
-    this.loadAll = value;
-    this.limit = 0;
-    this.startDate = null;
-    this.endDate = null;
+    this.filterValues.loadAll = value;
+    this.filterValues.loadNRandom = 0;
+    this.filterValues.interval.startDate = null;
+    this.filterValues.interval.endDate = null;
   }
 
   limitSelected(value: number) {
-    this.limit = value;
-    this.startDate = null;
-    this.endDate = null;
-    this.loadAll = false;
+    this.filterValues.loadAll = false;
+    this.filterValues.loadNRandom = value;
+    this.filterValues.interval.startDate = null;
+    this.filterValues.interval.endDate = null;
   }
 
   startDateSelected(value: Date) {
-    this.startDate = value;
-    this.limit = 0;
-    this.loadAll = false;
+    this.filterValues.loadAll = false;
+    this.filterValues.loadNRandom = 0;
+    this.filterValues.interval.startDate = value;
   }
 
   endDateSelected(value: Date) {
-    this.endDate = value;
-    this.limit = 0;
-    this.loadAll = false;
+    this.filterValues.loadAll = false;
+    this.filterValues.loadNRandom = 0;
+    this.filterValues.interval.endDate = value;
+  }
+
+  loadData(): void {
+    this.matchService.applyStrategy(this.filterValues);
   }
 }
