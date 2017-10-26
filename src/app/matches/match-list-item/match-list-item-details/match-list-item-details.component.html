@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body detailsContainer">
+      <table class="table">
+          <thead>
+              <tr class="row">
+                  <th class="col-2">Time</th>
+                  <th class="col-4">Score</th>
+                  <th class="col-2">Coef 1</th>
+                  <th class="col-2">Coef X</th>
+                  <th class="col-2">Coef 2</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let detail of details" class="row"
+                [ngClass]="{'goal': detail.team1Scored || detail.team2Scored, 'reconstructed': detail.reconstructed}">
+                  <td class="col-2">{{detail.scoreTime}}</td>
+                  <td class="col-4">{{detail.score1}} - {{detail.score2}}</td>
+                  <td class="col-2">{{detail.nextGoal1Coef}}</td>
+                  <td class="col-2">{{detail.nextGoalXCoef}}</td>
+                  <td class="col-2">{{detail.nextGoal2Coef}}</td>
+              </tr>
+          </tbody>
+      </table>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

@@ -1,0 +1,12 @@
+.detailsContainer {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.goal {
+    background-color: #e6ffb3;
+}
+
+.reconstructed {
+    background-color: #ebebe0;
+}

@@ -1,0 +1,28 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    </div>
+</ng-template>
+
+<td class="col-md-4">
+    <div>
+        <span>{{forecast.match.sportName}} | </span>
+        <span>{{forecast.match.location}} | </span>
+        <span>{{forecast.match.championship}}</span>
+        <br />
+        <a href="javascript:void(0)" (click)="open(content)">{{forecast.match.homeTeam}} - {{forecast.match.awayTeam}}</a>
+    </div>
+</td>
+<td class="col-md-3">{{forecast.betSum}}</td>
+<td class="col-md-2">{{forecast.coefficient}}</td>
+<td class="col-md-4"></td>
+<td class="col-md-1">{{forecast.minute}}</td>

@@ -1,4 +1,5 @@
-import { Match } from './../matches/data-import/model/match';
+import { Match } from './match';
+
 export class Forecast {
   constructor(
     public coefficient: number,

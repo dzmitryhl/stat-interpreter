@@ -36,6 +36,9 @@ export class FilterPanelComponent implements OnInit {
     label: "10000 Random"
   }];
 
+  test1;
+  test2;
+
   constructor(private matchService: MatchService, private injector: Injector) {}
 
   ngOnInit() {
@@ -102,19 +105,29 @@ export class FilterPanelComponent implements OnInit {
     this.filterValues.interval.endDate = null;
   }
 
-  startDateSelected(value: Date) {
+  startDateSelected(value: any): void {
+    console.log(value);
     this.filterValues.loadAll = false;
     this.filterValues.loadNRandom = 0;
     this.filterValues.interval.startDate = value;
+
+    console.log();
   }
 
-  endDateSelected(value: Date) {
+  endDateSelected(value: any): void {
     this.filterValues.loadAll = false;
     this.filterValues.loadNRandom = 0;
     this.filterValues.interval.endDate = value;
   }
 
   loadData(): void {
-    this.matchService.applyStrategy(this.filterValues);
+    let intervalStart = this.filterValues.interval.startDate;
+    let intervalEnd = this.filterValues.interval.endDate;
+    this.matchService.applyStrategy(Object.assign({}, this.filterValues, {
+      interval: {
+        startDate: intervalStart ? new Date(intervalStart.year, intervalStart.month - 1, intervalStart.day) : null,
+        endDate: intervalEnd ? new Date(intervalEnd.year, intervalEnd.month - 1, intervalEnd.day) : null,
+      }
+    }));
   }
 }

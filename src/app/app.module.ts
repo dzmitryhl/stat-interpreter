@@ -5,11 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MatchListComponent } from './matches/match-list.component';
-import { MatchListItemComponent } from './matches/match-list-item.component';
+import { MatchListItemComponent } from './matches/match-list-item/match-list-item.component';
 import {MatchService} from "./matches/match.service";
 
 import { routing } from "./app.routing";
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { routing } from "./app.routing";
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

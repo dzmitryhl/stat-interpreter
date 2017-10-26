@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from "@angular/forms";
@@ -5,7 +6,7 @@ import { matchesRouting } from "./matches.routing";
 import { MatchesComponent } from './matches.component';
 import { MatchService } from "./match.service";
 import { MatchListComponent } from "./match-list.component";
-import { MatchListItemComponent } from "./match-list-item.component";
+import { MatchListItemComponent } from "./match-list-item/match-list-item.component";
 import { FilterPanelComponent } from './filter-panel/filter-panel.component';
 import { FilterForecastStatusPipe } from "./pipes/filter-forecast-status.pipe";
 import { TableFiltersComponent } from './table-filters/table-filters.component';
@@ -20,23 +21,23 @@ import { FilterMatchChampionshipPipe } from './pipes/filter-match-championship.p
 import { FilterCompetitionFilterOptionsPipe } from './pipes/filter-competition-filter-options.pipe';
 import { FilterCompetitionDuplicatesPipe } from './pipes/filter-competition-duplicates.pipe';
 import { SortCompetitionsPipe } from './pipes/sort-competitions.pipe';
-import { DatePickerDirective } from './shared/date-picker.directive';
 import { FilterMatchDateRangeStartPipe } from './pipes/filter-match-date-range-start.pipe';
 import { FilterMatchDateRangeEndPipe } from './pipes/filter-match-date-range-end.pipe';
 import { FilterMatchCompletenessPipe } from './pipes/filter-match-completeness.pipe';
 import { DataImportActionPanelComponent } from './data-import/data-import-action-panel/data-import-action-panel.component';
-import { RangeSliderDirective } from './shared/range-slider.directive';
 import { FormatNullValuePipe } from './pipes/format-null-value.pipe';
 import { EnumTransformPipe } from './pipes/enum-transform.pipe';
 
 import { APP_CONFIG, CONFIG } from '../app.config';
 import { StrategyTypeNamePipe } from './pipes/strategy-type-name.pipe';
+import { MatchListItemDetailsComponent } from './match-list-item/match-list-item-details/match-list-item-details.component';
 
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
-    matchesRouting
+    matchesRouting,
+    NgbModule
   ],
   declarations: [
     MatchesComponent,
@@ -57,15 +58,17 @@ import { StrategyTypeNamePipe } from './pipes/strategy-type-name.pipe';
     FilterCompetitionFilterOptionsPipe,
     FilterCompetitionDuplicatesPipe,
     SortCompetitionsPipe,
-    DatePickerDirective,
     FilterMatchDateRangeStartPipe,
     FilterMatchDateRangeEndPipe,
     FilterMatchCompletenessPipe,
     DataImportActionPanelComponent,
-    RangeSliderDirective,
     FormatNullValuePipe,
     EnumTransformPipe,
-    StrategyTypeNamePipe
+    StrategyTypeNamePipe,
+    MatchListItemDetailsComponent
+  ],
+  entryComponents: [
+    MatchListItemDetailsComponent
   ],
   exports: [MatchesComponent],
   providers: [

@@ -1,101 +1,25 @@
-.hBox.noWrap {
-    flex-wrap: nowrap;
+.testRow .col-1,
+.testRow .col-2,
+.testRow .col-3,
+.testRow .col-4,
+.testRow .col-5,
+.testRow .col-6,
+.testRow .col-7,
+.testRow .col-8,
+.testRow .col-9,
+.testRow .col-10,
+.testRow .col-11,
+.testRow .col-12 {
+    padding-right: 0;
+    padding-left: 0;
 }
 
-.form-control.small-input {
-    text-align: center;
-    min-width: 25px;
-    height: 25px;
-    padding: 6px;
+.testRow .row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
-.flex-container {
-    align-items: stretch;
-}
-
-.flex-item-inner-horizontal {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.strategyOptionsContainer {
-  width: 150px;
-}
-
-
-.optionsRow {
-  width: 100%;
-}
-
-.datePickerContainer {
-    width: 100px;
-}
-
-.separator {
-     margin-bottom: 5px;
-}
-
-/*.flex-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-}
-
-.checkbox.no-margin {
-    margin-bottom: 0px;
-}
-
-.button-container {
-    display: flex;
-    flex-direction: row;
-}
-
-.loader {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 2s linear infinite;
-    margin-right: 10px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}*/
-
-
-
-
-/* Hiding the checkbox, but allowing it to be focused */
-.badgebox
-{
-    opacity: 0;
-}
-
-.badgebox + .badge
-{
-    /* Move the check mark away when unchecked */
-    text-indent: -999999px;
-    /* Makes the badge's width stay the same checked and unchecked */
-    width: 27px;
-}
-
-.badgebox:focus + .badge
-{
-    /* Set something to make the badge looks focused */
-    /* This really depends on the application, in my case it was: */
-    
-    /* Adding a light border */
-    box-shadow: inset 0px 0px 5px;
-    /* Taking the difference out of the padding */
-}
-
-.badgebox:checked + .badge
-{
-    /* Move the check mark back when checked */
-	text-indent: 0;
+.select-all-button-label,
+.checkbox-label {
+    margin-bottom: 0;
 }
