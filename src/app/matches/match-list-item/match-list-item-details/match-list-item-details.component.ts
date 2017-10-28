@@ -8,7 +8,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class MatchListItemDetailsComponent{
 
-  @Input() detals: Array<Detail>;
+  @Input() details: Array<Detail>;
   
   constructor(public activeModal: NgbActiveModal) {}
 }

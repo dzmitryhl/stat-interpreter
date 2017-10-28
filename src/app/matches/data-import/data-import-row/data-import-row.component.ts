@@ -9,7 +9,7 @@ import {Detail} from "../model/detail";
   templateUrl: './data-import-row.component.html',
   styleUrls: ['./data-import-row.component.css']
 })
-export class DataImportRowComponent implements OnInit {
+export class DataImportRowComponent {
 
   @Input() row: Detail;
   @Input() searchTerm: string;
@@ -18,21 +18,17 @@ export class DataImportRowComponent implements OnInit {
 
   constructor(private dataImportService: DataImportService) { }
 
-  ngOnInit() {
-  }
-
-  handleFormSubmit() {
+  handleFormSubmit(x: any) {
     this.buttonClicked = true;
     this.dataImportService.updateMatchResult({
       matchId: this.row.id,
       homeTeamScore: this.row.score1,
       awayTeamScore: this.row.score2
     });
-    
     //this.dataImportService.saveRow(this.row);
   }
 
-  handleGoogleSearch() {
+  handleGoogleSearch(x: any) {
     let win = window.open('https://www.google.ru/search?q=' + this.searchTerm, '_blank');
     win.focus();
   }

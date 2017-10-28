@@ -16,7 +16,7 @@ export class MatchListItemComponent {
   
     constructor(private modalService: NgbModal) {}
   
-    open() {
+    open(x: any) {
       const modalRef = this.modalService.open(MatchListItemDetailsComponent);
       modalRef.componentInstance.details = this.forecast.match.details;
     }

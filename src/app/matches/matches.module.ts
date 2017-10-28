@@ -2,7 +2,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from "@angular/forms";
-import { matchesRouting } from "./matches.routing";
+import { MatchesRoutingModule } from "./matches-routing.module";
 import { MatchesComponent } from './matches.component';
 import { MatchService } from "./match.service";
 import { MatchListComponent } from "./match-list.component";
@@ -36,7 +36,7 @@ import { MatchListItemDetailsComponent } from './match-list-item/match-list-item
   imports: [
     FormsModule,
     CommonModule,
-    matchesRouting,
+    MatchesRoutingModule,
     NgbModule
   ],
   declarations: [
