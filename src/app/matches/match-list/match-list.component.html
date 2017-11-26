@@ -1,6 +1,6 @@
 <app-filter-panel></app-filter-panel>
 <a routerLink="/matches/data-import">Data Import</a>
-<ng-container *ngFor="let partialResult of data?.partialResults">
+<ng-container *ngFor="let partialResult of (appState | async)?.totalResult.partialResults">
   <div class="">Total: {{partialResult.total}}, Number of Bets: {{partialResult.numberOfBets}}</div>
   <table class="table table-bordered" id="forecasts-table">
     <thead>
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <tr app-match-list-item
-        *ngFor="let forecast of partialResult?.forecasts"
+        *ngFor="let forecast of (appState | async)?.totalResult.partialResults[0].forecasts"
         [forecast]="forecast"
         [ngClass]="{'winning': forecast.winning}">
       </tr>

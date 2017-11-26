@@ -1,3 +1,22 @@
+<div
+  class="btn-group" 
+  ngbRadioGroup
+  name="radioBasic"
+  [ngModel]="(appState | async).switcher"
+  (ngModelChange)="switcherStateChanged($event)">
+
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" [value]="true"> On
+    </label>
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" [value]="false"> Off
+    </label>
+</div>
+
+<p>
+  {{(appState | async).switcher}}
+</p>
+
 <p>
   <a routerLink="/matches">Matches</a>
 </p>

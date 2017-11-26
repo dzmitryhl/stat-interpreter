@@ -1,3 +1,4 @@
+import { EffectsModule } from '@ngrx/effects';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -5,7 +6,7 @@ import { FormsModule } from "@angular/forms";
 import { MatchesRoutingModule } from "./matches-routing.module";
 import { MatchesComponent } from './matches.component';
 import { MatchService } from "./match.service";
-import { MatchListComponent } from "./match-list.component";
+import { MatchListComponent } from "./match-list/match-list.component";
 import { MatchListItemComponent } from "./match-list-item/match-list-item.component";
 import { FilterPanelComponent } from './filter-panel/filter-panel.component';
 import { FilterForecastStatusPipe } from "./pipes/filter-forecast-status.pipe";
@@ -32,18 +33,23 @@ import { APP_CONFIG, CONFIG } from '../app.config';
 import { StrategyTypeNamePipe } from './pipes/strategy-type-name.pipe';
 import { MatchListItemDetailsComponent } from './match-list-item/match-list-item-details/match-list-item-details.component';
 
+import { StoreModule } from '@ngrx/store';
+import { matchesReducer } from './store/matches.reducers';
+import { MatchesEffects } from './store/matches.effects';
+
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
     MatchesRoutingModule,
-    NgbModule
+    NgbModule,
+    StoreModule.forFeature("matches", matchesReducer),
+    EffectsModule.forFeature([MatchesEffects])
   ],
   declarations: [
     MatchesComponent,
     MatchListComponent,
     MatchListItemComponent,
-    MatchesComponent,
     FilterPanelComponent,
     FilterForecastStatusPipe,
     TableFiltersComponent,

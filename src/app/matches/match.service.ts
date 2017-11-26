@@ -1,5 +1,5 @@
-import {Injectable, Inject, EventEmitter} from '@angular/core';
-import {Headers, Http, Response} from "@angular/http";
+import { Injectable, Inject, EventEmitter } from '@angular/core';
+import { HttpHeaders, HttpClient } from "@angular/common/http";
 
 import 'rxjs/Rx';
 import { Match } from "../model/match";
@@ -23,13 +23,12 @@ export class MatchService {
   status: string = '';
 
   constructor(
-    private http: Http) {}
+    private httpClient: HttpClient) {}
 
   fetchPeriodsData() {
-    return this.http.get('http://localhost:8080/periods', {
+    return this.httpClient.get<Period[]>('http://localhost:8080/periods', {
       withCredentials: true
     })
-      .map((response: Response) => response.json())
       .subscribe(
         (data: Period[]) => {
           this.periods = data;
@@ -38,49 +37,47 @@ export class MatchService {
       )
   }
 
-  loadData(data) {
-    const body = JSON.stringify({
-      periodId: data.period
-    });
-    const headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post('http://localhost:8080/loadData', body, {
-      headers: headers,
-      withCredentials: true
-    })
-      .map((response: Response) => response.json())
-      .subscribe(
-        (data: any) => {
-          this.forecastsChanged.emit(data.forecasts);
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      );
-  }
+  // loadData(data) {
+  //   const body = JSON.stringify({
+  //     periodId: data.period
+  //   });
 
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   });
 
+  //   return this.httpClient.post('http://localhost:8080/loadData', body, {
+  //     headers: headers,
+  //     withCredentials: true
+  //   })
+  //     .subscribe(
+  //       (data: any) => {
+  //         this.forecastsChanged.emit(data.forecasts);
+  //       },
+  //       (error: any) => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
 
-  applyStrategy(strategyArgs) {
-    const body = JSON.stringify(strategyArgs);
-    const headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post('http://localhost:8080/loadData', body, {
-      headers: headers,
-      withCredentials: true
-    })
-      .map((response: Response) => response.json())
-      .subscribe(
-        (data: any) => {
-          console.log("loaded");
-          this.forecastsChanged.emit(data.partialResults[0].forecasts);
-          this.strategyRequstCompleted.emit(data);
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      );
-  }
+  // applyStrategy(strategyArgs) {
+  //   const body = JSON.stringify(strategyArgs);
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   });
+  //   return this.httpClient.post('http://localhost:8080/loadData', body, {
+  //     headers: headers,
+  //     withCredentials: true
+  //   })
+  //     .subscribe(
+  //       (data: any) => {
+  //         console.log("loaded");
+  //         this.forecastsChanged.emit(data.partialResults[0].forecasts);
+  //         this.strategyRequstCompleted.emit(data);
+  //       },
+  //       (error: any) => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
 }

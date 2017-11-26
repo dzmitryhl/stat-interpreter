@@ -5,6 +5,11 @@ import { StrategyType } from "../../model/strategyType";
 import { MatchService } from "../match.service";
 import { APP_CONFIG } from "../../app.config"
 
+import * as fromMatches from '../store/matches.reducers';
+import { Store } from '@ngrx/store';
+import { ApplyStrategy } from './../store/matches.actions';
+
+
 @Component({
   selector: 'app-filter-panel',
   templateUrl: './filter-panel.component.html',
@@ -39,7 +44,10 @@ export class FilterPanelComponent implements OnInit {
   test1;
   test2;
 
-  constructor(private matchService: MatchService, private injector: Injector) {}
+  constructor(
+    private matchService: MatchService,
+    private injector: Injector,
+    private store: Store<fromMatches.State>) {}
 
   ngOnInit() {
     let config = this.injector.get(APP_CONFIG);
@@ -87,10 +95,6 @@ export class FilterPanelComponent implements OnInit {
     );
   }
 
-  handleFormSubmit(formData) {
-    this.matchService.loadData(formData);
-  }
-
   getAllButtonChecked(value: boolean) {
     this.filterValues.loadAll = value;
     this.filterValues.loadNRandom = 0;
@@ -123,11 +127,15 @@ export class FilterPanelComponent implements OnInit {
   loadData(): void {
     let intervalStart = this.filterValues.interval.startDate;
     let intervalEnd = this.filterValues.interval.endDate;
-    this.matchService.applyStrategy(Object.assign({}, this.filterValues, {
+
+    let strategyArgs = Object.assign({}, this.filterValues, {
       interval: {
         startDate: intervalStart ? new Date(intervalStart.year, intervalStart.month - 1, intervalStart.day) : null,
         endDate: intervalEnd ? new Date(intervalEnd.year, intervalEnd.month - 1, intervalEnd.day) : null,
       }
-    }));
+    });
+
+    this.store.dispatch(new ApplyStrategy(strategyArgs));
+
   }
 }
